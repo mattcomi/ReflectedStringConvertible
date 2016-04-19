@@ -17,7 +17,7 @@ class Person {
 }
 ```
 
-If you were to instantiate it and print it:
+If you were to instantiate and print it:
 
 ```swift
 let matt = Person(name: "Matt", age: 32, social: Social(twitter: "@mattcomi"))
