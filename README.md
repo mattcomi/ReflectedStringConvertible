@@ -17,7 +17,7 @@ class Person {
 }
 ```
 
-If you were to instantiate and print it:
+If we were to instantiate and print it:
 
 ```swift
 let matt = Person(name: "Matt", age: 32, social: Social(twitter: "@mattcomi"))
@@ -38,7 +38,7 @@ If `Person` were a struct however, we'd see something very different:
 Person(name: "Matt", age: 32, social: Social(twitter: "@mattcomi"))
 ```
 
-To get this kind of output from any class, just conform to `ReflectedStringConvertible`. There's nothing to implement, the implementation is provided by a protocol extension. 
+To get this kind of output from any class, just conform to `ReflectedStringConvertible`. There's nothing to implement, the implementation is provided by a protocol extension.
 
 ```swift
 class Person: ReflectedStringConvertible {
