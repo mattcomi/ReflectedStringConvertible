@@ -1,7 +1,7 @@
 # ReflectedStringConvertible
 A protocol that allows any class to be printed as if it were a struct.
 
-Here is the problem:
+Consider this class:
 
 ```swift
 class Person {
@@ -15,13 +15,16 @@ class Person {
     self.social = social
   }
 }
+```
 
+If you were to instantiate it and print it:
+
+```swift
 let matt = Person(name: "Matt", age: 32, social: Social(twitter: "@mattcomi"))
-
 print(matt)
 ```
 
-Outputs:
+It would output:
 
 ```swift
 Person
