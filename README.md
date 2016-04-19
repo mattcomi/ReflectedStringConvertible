@@ -62,3 +62,5 @@ Person(name: Matt, age: 32)
 ```
 
 Just like a struct.
+
+To learn more about how it all works, you can either look at the implementation, or read [this article](http://mattcomi.tumblr.com/post/143043907238/struct-style-printing-of-classes-in-swift).
