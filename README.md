@@ -11,7 +11,6 @@ class Person {
   init(name: String, age: Int) {
     self.name = name
     self.age = age
-    self.social = social
   }
 }
 ```
