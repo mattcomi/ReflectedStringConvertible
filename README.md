@@ -7,9 +7,8 @@ Consider this class:
 class Person {
   var name: String
   var age: Int
-  var social: Social
   
-  init(name: String, age: Int, social: Social) {
+  init(name: String, age: Int) {
     self.name = name
     self.age = age
     self.social = social
@@ -20,7 +19,7 @@ class Person {
 If we were to instantiate and print it:
 
 ```swift
-let matt = Person(name: "Matt", age: 32, social: Social(twitter: "@mattcomi"))
+let matt = Person(name: "Matt", age: 32)
 print(matt)
 ```
 
@@ -35,7 +34,7 @@ When outputting classes, if a string representation isn't provided, Swift uses A
 If `Person` were a struct however, we'd see something very different:
 
 ```swift
-Person(name: "Matt", age: 32, social: Social(twitter: "@mattcomi"))
+Person(name: "Matt", age: 32)
 ```
 
 To get this kind of output from any class, just conform to `ReflectedStringConvertible`. There's nothing to implement, the implementation is provided by a protocol extension.
@@ -46,14 +45,13 @@ class Person: ReflectedStringConvertible {
   var age: Int
   var social: Social
   
-  init(name: String, age: Int, social: Social) {
+  init(name: String, age: Int) {
     self.name = name
     self.age = age
-    self.social = social
   }
 }
 
-let matt = Person(name: "Matt", age: 32, social: Social(twitter: "@mattcomi"))
+let matt = Person(name: "Matt", age: 32)
 
 print(matt)
 ```
@@ -61,7 +59,7 @@ print(matt)
 Outputs:
 
 ```
-Person(name: Matt, age: 32, social: Social(twitter: "@mattcomi"))
+Person(name: Matt, age: 32)
 ```
 
 Just like a struct.
