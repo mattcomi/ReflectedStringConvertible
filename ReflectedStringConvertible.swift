@@ -6,22 +6,14 @@ extension ReflectedStringConvertible {
   public var description: String {
     let mirror = Mirror(reflecting: self)
     
-    var str = "\(mirror.subjectType)("
-    var first = true
-    for (label, value) in mirror.children {
+    let children: [String] = mirror.children.flatMap { (label, value) in
       if let label = label {
-        if first {
-          first = false
-        } else {
-          str += ", "
-        }
-        str += label
-        str += ": "
-        str += "\(value)"
+        return "\(label): \(value)"
       }
+      
+      return nil
     }
-    str += ")"
-    
-    return str
+  
+    return "\(mirror.subjectType)(\(children.joinWithSeparator(", ")))"
   }
 }
