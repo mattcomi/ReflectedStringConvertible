@@ -42,7 +42,6 @@ To get this kind of output from any class, just conform to `ReflectedStringConve
 class Person: ReflectedStringConvertible {
   var name: String
   var age: Int
-  var social: Social
   
   init(name: String, age: Int) {
     self.name = name
