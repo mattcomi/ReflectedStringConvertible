@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.author = { "Matt Comi" => "mattcomi@gmail.com" }
 
   s.source = { :git => "https://github.com/mattcomi/ReflectedStringConvertible.git", :tag => "#{s.version}"} 
-  s.source_files = "PersistentObject/*.{swift}"
+  s.source_files = "ReflectedStringConvertible/*.{swift}"
   s.requires_arc = true
   
   s.ios.deployment_target = '8.0'
