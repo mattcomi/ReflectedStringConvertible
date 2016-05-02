@@ -39,12 +39,12 @@
 			remoteGlobalIDString = B615264E1CD2EF9C00CB7B50;
 			remoteInfo = ReflectedStringConvertible;
 		};
-		B61526881CD7C52F00CB7B50 /* PBXContainerItemProxy */ = {
+		B615269A1CD7D36B00CB7B50 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B61526461CD2EF9C00CB7B50 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = B615264E1CD2EF9C00CB7B50;
-			remoteInfo = ReflectedStringConvertible;
+			remoteGlobalIDString = B615267A1CD7C52700CB7B50;
+			remoteInfo = "ReflectedStringConvertible OS X";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -234,7 +234,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				B61526871CD7C52F00CB7B50 /* PBXTargetDependency */,
+				B615269B1CD7D36B00CB7B50 /* PBXTargetDependency */,
 			);
 			name = "ReflectedStringConvertible OS X Tests";
 			productName = ReflectedStringConvertibleTests;
@@ -365,10 +365,10 @@
 			target = B615264E1CD2EF9C00CB7B50 /* ReflectedStringConvertible iOS */;
 			targetProxy = B615265B1CD2EF9C00CB7B50 /* PBXContainerItemProxy */;
 		};
-		B61526871CD7C52F00CB7B50 /* PBXTargetDependency */ = {
+		B615269B1CD7D36B00CB7B50 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B615264E1CD2EF9C00CB7B50 /* ReflectedStringConvertible iOS */;
-			targetProxy = B61526881CD7C52F00CB7B50 /* PBXContainerItemProxy */;
+			target = B615267A1CD7C52700CB7B50 /* ReflectedStringConvertible OS X */;
+			targetProxy = B615269A1CD7D36B00CB7B50 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -391,7 +391,6 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -411,7 +410,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos9.3;
@@ -440,7 +438,6 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -454,7 +451,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos9.3;
 				TARGETED_DEVICE_FAMILY = "1,2";
