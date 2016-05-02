@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = "ReflectedStringConvertible"
-  s.version = "1.0"
+  s.version = "1.0.0"
   s.summary = "A protocol that extends `CustomStringConvertible` to add a detailed textual representation to any class."
 
   s.homepage = "https://github.com/mattcomi/ReflectedStringConvertible"  
