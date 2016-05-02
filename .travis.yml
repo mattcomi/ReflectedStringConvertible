@@ -1,8 +1,13 @@
 language: objective-c
 osx_image: xcode7.3
 xcode_sdk: iphonesimulator9.3
-  
-script: 'sh travis.sh'
+
+before_install:
+  - brew update
+  - brew remove --force xctool
+  - brew install xctool --HEAD
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
+
+script: 'sh travis.sh'
