@@ -1,0 +1,26 @@
+{
+  "dictionary" : {
+    "b" : 1.5,
+    "nestedArray" : [
+      "nestedArrayItem",
+      true,
+      false
+    ],
+    "a" : 1,
+    "c" : true,
+    "e" : {
+      "b" : 10,
+      "e" : "AttributedThird(30)",
+      "a" : "base",
+      "f" : "(\"tuple\", 123)",
+      "d" : true,
+      "c" : 20
+    },
+    "d" : "Second",
+    "nestedDictionary" : {
+      "2" : "two",
+      "1" : "one",
+      "3" : "three"
+    }
+  }
+}
