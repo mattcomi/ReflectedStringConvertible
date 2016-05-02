@@ -56,8 +56,6 @@ class ReflectedStringConvertibleTests: XCTestCase {
     XCTAssertEqual(classWithReflectingClass.reflectedDescription(.JSON),
       contentsOfFile("expectedClassWithReflectingClass.json"))
     
-    print(classWithReflectingClass.reflectedDescription(.JSON))
-    
     class SomeClass: ReflectedStringConvertible {
       let array: [Any] = [1, 2.0, true, "test"]
       let bool: Bool = true
@@ -65,8 +63,6 @@ class ReflectedStringConvertibleTests: XCTestCase {
       
       init() {}
     }
-    
-    print(SomeClass().reflectedDescription(.JSON))
   }
   
   /// Test the behavior of arrays.

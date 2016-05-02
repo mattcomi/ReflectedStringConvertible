@@ -6,7 +6,7 @@
 //  Copyright © 2016 Matt Comi. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import Foundation;
 
 //! Project version number for ReflectedStringConvertible.
 FOUNDATION_EXPORT double ReflectedStringConvertibleVersionNumber;
