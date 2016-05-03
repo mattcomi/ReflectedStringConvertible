@@ -2,10 +2,10 @@
 
 import Foundation
 
+/// Indicates that a type can be safely included in a JSON object without being converted to a string. In other words, 
+/// it may appear as a value without being quoted.
 public protocol JSONConvertible {}
 
-// This extension indicates that a type can be safely included in a JSON object without being converted to a string.
-// In other words, it may appear as a value without being quoted.
 extension Double: JSONConvertible {}
 extension Float: JSONConvertible {}
 extension Bool: JSONConvertible {}
@@ -59,17 +59,18 @@ extension Dictionary: JSONConvertibleDictionary {
   }
 }
 
-/// A protocol that extends `CustomStringConvertible` to provide a detailed textual representation for any class.
+/// A protocol that extends CustomStringConvertible to add a detailed textual representation to any class.
 ///
-/// Two styles are supported: `Normal` and `JSON`. `description` is extended to return the `Normal` style.
-/// Use `description(.JSON)` for `JSON` output.
+/// Two styles are supported:
+/// - `Normal`: Similar to Swift's default textual representation of structs.
+/// - `JSON`: Pretty JSON representation.
 public protocol ReflectedStringConvertible : CustomStringConvertible { }
 
 /// The textual representation style.
 public enum Style {
   /// Similar to the default textual representation of structs.
   case Normal
-  /// JSON style.
+  /// Pretty JSON style.
   case JSON
 }
 

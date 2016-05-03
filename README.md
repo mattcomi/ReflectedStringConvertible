@@ -4,15 +4,15 @@
 [![Platform](https://img.shields.io/cocoapods/p/ReflectedStringConvertible.svg?style=flat)](http://cocoadocs.org/docsets/ReflectedStringConvertible)
 
 # ReflectedStringConvertible
-A protocol that extends `CustomStringConvertible` to add a detailed textual representation to any class. Two styles are
-supported:
+A protocol that extends `CustomStringConvertible` and uses reflection to add a
+detailed textual representation to any class. Two styles are supported:
 
 1. `Normal`: Similar to Swift's default textual representation of structs.
 2. `JSON`: Pretty JSON representation.
 
-# Installation
+## Installation
 
-## Cocoapods
+### Cocoapods
 
 Add the following to your Podfile:
 
@@ -20,7 +20,7 @@ Add the following to your Podfile:
 pod 'ReflectedStringConvertible'
 ```
 
-## Carthage
+### Carthage
 
 Add the following to your Cartfile:
 
@@ -28,7 +28,7 @@ Add the following to your Cartfile:
 github "mattcomi/ReflectedStringConvertible"
 ```
 
-# Usage
+## Usage
 
 Simply import `ReflectedStringConvertible` and conform to the
 `ReflectedStringConvertible` protocol:
@@ -74,9 +74,9 @@ For example, `print(Person(name: "Matt", age: 33).reflectedDescription(.JSON))` 
 
 Refer to the  [API Documentation](http://cocoadocs.org/docsets/ReflectedStringConvertible) for further information.
 
-# Features
+## Features
 
-## `ReflectedStringConvertible` stored properties
+### `ReflectedStringConvertible` stored properties
 
 `ReflectedStringConvertible` objects with `ReflectedStringConvertible` stored properties are handled correctly:
 
@@ -118,7 +118,7 @@ And `print(movie.reflectedDescription(.JSON))` outputs:
 }
 ```
 
-## Collections
+### Collections
 
 `ReflectedStringConvertible` objects within `Array`, `Dictionary` and `Set` collections are handled correctly:
 
@@ -164,6 +164,6 @@ TVShow(title: "The Leftovers", cast: [Person(name: "Justin Theroux", age: 44), P
 }
 ```
 
-# Credits
+## Credits
 
 Developed by Matt Comi ([@mattcomi](http://twitter.com/mattcomi))
