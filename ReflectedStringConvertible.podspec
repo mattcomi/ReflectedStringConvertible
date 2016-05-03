@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name = "ReflectedStringConvertible"
-  s.version = "1.0.0"
-  s.summary = "A protocol that extends `CustomStringConvertible` to add a detailed textual representation to any class."
+  s.version = "1.0.1"
+  s.summary = "A protocol that allows any class to be printed as if it were a struct or a JSON object."
 
   s.homepage = "https://github.com/mattcomi/ReflectedStringConvertible"  
   s.license = { :type => "MIT", :file => "LICENSE" }
