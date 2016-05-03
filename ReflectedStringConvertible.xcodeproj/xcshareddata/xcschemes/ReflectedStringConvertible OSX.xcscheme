@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B615267A1CD7C52700CB7B50"
-               BuildableName = "ReflectedStringConvertible OS X.framework"
+               BuildableName = "ReflectedStringConvertible.framework"
                BlueprintName = "ReflectedStringConvertible OS X"
                ReferencedContainer = "container:ReflectedStringConvertible.xcodeproj">
             </BuildableReference>
@@ -29,7 +29,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B61526861CD7C52F00CB7B50"
-               BuildableName = "ReflectedStringConvertible OS X Tests.xctest"
+               BuildableName = "ReflectedStringConvertibleTests.xctest"
                BlueprintName = "ReflectedStringConvertible OS X Tests"
                ReferencedContainer = "container:ReflectedStringConvertible.xcodeproj">
             </BuildableReference>
@@ -40,14 +40,15 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      codeCoverageEnabled = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B61526861CD7C52F00CB7B50"
-               BuildableName = "ReflectedStringConvertible OS X Tests.xctest"
+               BuildableName = "ReflectedStringConvertibleTests.xctest"
                BlueprintName = "ReflectedStringConvertible OS X Tests"
                ReferencedContainer = "container:ReflectedStringConvertible.xcodeproj">
             </BuildableReference>
@@ -57,7 +58,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B615267A1CD7C52700CB7B50"
-            BuildableName = "ReflectedStringConvertible OS X.framework"
+            BuildableName = "ReflectedStringConvertible.framework"
             BlueprintName = "ReflectedStringConvertible OS X"
             ReferencedContainer = "container:ReflectedStringConvertible.xcodeproj">
          </BuildableReference>
@@ -79,7 +80,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B615267A1CD7C52700CB7B50"
-            BuildableName = "ReflectedStringConvertible OS X.framework"
+            BuildableName = "ReflectedStringConvertible.framework"
             BlueprintName = "ReflectedStringConvertible OS X"
             ReferencedContainer = "container:ReflectedStringConvertible.xcodeproj">
          </BuildableReference>
@@ -97,7 +98,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B615267A1CD7C52700CB7B50"
-            BuildableName = "ReflectedStringConvertible OS X.framework"
+            BuildableName = "ReflectedStringConvertible.framework"
             BlueprintName = "ReflectedStringConvertible OS X"
             ReferencedContainer = "container:ReflectedStringConvertible.xcodeproj">
          </BuildableReference>
