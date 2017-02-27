@@ -12,47 +12,47 @@ extension Bool: JSONConvertible {}
 extension Int: JSONConvertible {}
 extension UInt: JSONConvertible {}
 
-func jsonConvertibleObject<T>(value: T) -> AnyObject {
+func jsonConvertibleObject<T>(_ value: T) -> Any {
   if case let reflectedStringConvertible as ReflectedStringConvertible = value {
     // handle ReflectedStringConvertibles recursively.
     return reflectedStringConvertible.dictionary(Mirror(reflecting: reflectedStringConvertible).allChildren)
   } else if value is JSONConvertible {
-    let anyObject = value as! AnyObject
+    let anyObject = value
     return anyObject
   } else if case let collection as JSONConvertibleCollection = value {
     return collection.jsonConvertibleObjects
   } else if case let dictionaryValue as JSONConvertibleDictionary = value {
     return dictionaryValue.jsonConvertibleElements
   } else {
-    return String(value)
+    return String(describing: value)
   }
 }
 
 protocol JSONConvertibleCollection {
-  var jsonConvertibleObjects: [AnyObject] { get }
+  var jsonConvertibleObjects: [Any] { get }
 }
 
 protocol JSONConvertibleDictionary {
-  var jsonConvertibleElements: [String:AnyObject] { get }
+  var jsonConvertibleElements: [String: Any] { get }
 }
 
 extension Array: JSONConvertibleCollection {
-  var jsonConvertibleObjects: [AnyObject] {
+  var jsonConvertibleObjects: [Any] {
     return self.map { jsonConvertibleObject($0) }
   }
 }
 
 extension Set: JSONConvertibleCollection {
-  var jsonConvertibleObjects: [AnyObject] {
+  var jsonConvertibleObjects: [Any] {
     return self.map { jsonConvertibleObject($0) }
   }
 }
 
 extension Dictionary: JSONConvertibleDictionary {
-  var jsonConvertibleElements: [String:AnyObject] {
-    var dict: [String: AnyObject] = [:]
+  var jsonConvertibleElements: [String: Any] {
+    var dict: [String: Any] = [:]
     for (key, value) in self {
-      dict[String(key)] = jsonConvertibleObject(value)
+      dict[String(describing: key)] = jsonConvertibleObject(value)
     }
     
     return dict
@@ -69,20 +69,20 @@ public protocol ReflectedStringConvertible : CustomStringConvertible { }
 /// The textual representation style.
 public enum Style {
   /// Similar to the default textual representation of structs.
-  case Normal
+  case normal
   /// Pretty JSON style.
-  case JSON
+  case json
 }
 
 extension ReflectedStringConvertible {
   /// A detailed textual representation of `self`.
   ///
   /// - parameter style: The style of the textual representation.
-  public func reflectedDescription(style: Style) -> String {
+  public func reflectedDescription(_ style: Style) -> String {
     switch style {
-    case .Normal:
+    case .normal:
       return self.description
-    case .JSON:
+    case .json:
       return self.jsonDescription
     }
   }
@@ -104,20 +104,20 @@ extension ReflectedStringConvertible {
       return nil
     }
     
-    return "\(mirror.subjectType)(\(descriptions.joinWithSeparator(", ")))"
+    return "\(mirror.subjectType)(\(descriptions.joined(separator: ", ")))"
   }
   
   /// A `JSON` style detailed textual representation of `self`.
-  private var jsonDescription: String {
+  fileprivate var jsonDescription: String {
     let dictionary = self.dictionary(Mirror(reflecting: self).allChildren)
-    let data = try! NSJSONSerialization.dataWithJSONObject(dictionary, options: .PrettyPrinted)
-    return String(data: data, encoding: NSUTF8StringEncoding)!
+    let data = try! JSONSerialization.data(withJSONObject: dictionary, options: .prettyPrinted)
+    return String(data: data, encoding: String.Encoding.utf8)!
   }
   
   /// A dictionary representation of a `Mirror`'s children. Any child that conforms to `ReflectedStringConvertible` is
   /// handled recursively.
-  private func dictionary(children: [Mirror.Child]) -> [String:AnyObject] {
-    var dictionary: [String:AnyObject] = [:]
+  fileprivate func dictionary(_ children: [Mirror.Child]) -> [String: Any] {
+    var dictionary: [String: Any] = [:]
     
     for child in children {
       if let label = child.label {
@@ -134,11 +134,11 @@ extension Mirror {
   var allChildren: [Mirror.Child] {
     var children = Array(self.children)
     
-    var superclassMirror = self.superclassMirror()
+    var superclassMirror = self.superclassMirror
     
     while let mirror = superclassMirror {
-      children.appendContentsOf(mirror.children)
-      superclassMirror = mirror.superclassMirror()
+      children.append(contentsOf: mirror.children)
+      superclassMirror = mirror.superclassMirror
     }
     
     return children

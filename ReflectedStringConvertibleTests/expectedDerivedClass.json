@@ -2,7 +2,7 @@
   "b" : 1,
   "a" : "test",
   "c" : 3,
-  "e" : "AttributedThird(123)",
+  "e" : "attributedThird(123)",
   "f" : "(\"tuple\", 123)",
   "g" : [
     1,

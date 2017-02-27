@@ -1,6 +1,6 @@
 {
   "b" : 1,
-  "e" : "Second",
+  "e" : "second",
   "a" : "test",
   "f" : "(\"tuple\", 123)",
   "d" : true,

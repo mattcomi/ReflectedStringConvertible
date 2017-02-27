@@ -5,7 +5,7 @@
     1.2,
     {
       "b" : 1,
-      "e" : "Second",
+      "e" : "second",
       "a" : "base",
       "f" : "(\"tuple\", 123)",
       "d" : false,
@@ -18,7 +18,7 @@
         "b" : 1,
         "a" : "derived",
         "c" : 2,
-        "e" : "Second",
+        "e" : "second",
         "f" : "(\"tuple\", 456)",
         "g" : [
           1,

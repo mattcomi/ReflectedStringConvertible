@@ -5,44 +5,47 @@ import XCTest
 @testable import ReflectedStringConvertible
 
 class ReflectedStringConvertibleTests: XCTestCase {
-  func contentsOfFile(path: String) -> String {
-    let bundle = NSBundle(forClass: self.dynamicType)
-    return try! String(contentsOfFile: bundle.pathForResource(path, ofType: nil)!)
+  func contentsOfFile(_ path: String) -> String {
+    let bundle = Bundle(for: type(of: self))
+    let contents = try! String(contentsOfFile: bundle.path(forResource: path, ofType: nil)!).trimmingCharacters(in: .whitespacesAndNewlines)
+    return contents
   }
   
   /// Test the basics.
   func testBasic() {
-    let baseClass = BaseClass(a: "test", b: 1, c: 2.1, d: true, e: .Second, f: ("tuple", 123))
+    let baseClass = BaseClass(a: "test", b: 1, c: 2.1, d: true, e: .second, f: ("tuple", 123))
     
-    XCTAssertEqual(String(baseClass), "BaseClass(a: \"test\", b: 1, c: 2.1, d: true, e: Second, f: (\"tuple\", 123))")
+    XCTAssertEqual(String(describing: baseClass), "BaseClass(a: \"test\", b: 1, c: 2.1, d: true, e: second, f: (\"tuple\", 123))")
     
-    XCTAssertEqual(baseClass.reflectedDescription(.Normal), String(baseClass))
+    XCTAssertEqual(baseClass.reflectedDescription(.normal), String(describing: baseClass))
     
-    XCTAssertEqual(baseClass.reflectedDescription(.JSON), contentsOfFile("expectedBaseClass.json"))
+    let jsonDescription = baseClass.reflectedDescription(.json)
+    let expectedJsonDescription = contentsOfFile("expectedBaseClass.json")
+    XCTAssertEqual(jsonDescription, expectedJsonDescription)
   }
   
   /// Test that superclass properties are included.
   func testSuperclass() {
     let derivedClass =
-      DerivedClass(a: "test", b: 1, c: 3, d: false, e: .AttributedThird(attribute: 123), f: ("tuple", 123), g: [1,2,3])
+      DerivedClass(a: "test", b: 1, c: 3, d: false, e: .attributedThird(attribute: 123), f: ("tuple", 123), g: [1,2,3])
     
     let expectedDerivedClassDescription =
-      "DerivedClass(g: [1, 2, 3], a: \"test\", b: 1, c: 3.0, d: false, e: AttributedThird(123), f: (\"tuple\", 123))"
+      "DerivedClass(g: [1, 2, 3], a: \"test\", b: 1, c: 3.0, d: false, e: attributedThird(123), f: (\"tuple\", 123))"
     
     XCTAssertEqual(derivedClass.description, expectedDerivedClassDescription)
     
-    XCTAssertEqual(derivedClass.reflectedDescription(.JSON), contentsOfFile("expectedDerivedClass.json"))
+    XCTAssertEqual(derivedClass.reflectedDescription(.json), contentsOfFile("expectedDerivedClass.json"))
   }
   
   /// Test that classes with class members that do not conform to ReflectedStringConvertible are treated properly.
   func testClassWithNonReflectingClass() {
     let classWithNonReflectingClass = ClassWithNonReflectingClass(nonReflectingClass: NonReflectingClass(number: 123))
     
-    XCTAssertEqual(classWithNonReflectingClass.reflectedDescription(.Normal),
+    XCTAssertEqual(classWithNonReflectingClass.reflectedDescription(.normal),
       "ClassWithNonReflectingClass(nonReflectingClass: ReflectedStringConvertibleTests.NonReflectingClass)")
     
     XCTAssertEqual(
-      classWithNonReflectingClass.reflectedDescription(.JSON),
+      classWithNonReflectingClass.reflectedDescription(.json),
       contentsOfFile("expectedClassWithNonReflectingClass.json"))
   }
   
@@ -53,7 +56,7 @@ class ReflectedStringConvertibleTests: XCTestCase {
     XCTAssertEqual(classWithReflectingClass.description,
       "ClassWithReflectingClass(reflectingClass: ReflectingClass(a: \"reflecting\"))")
     
-    XCTAssertEqual(classWithReflectingClass.reflectedDescription(.JSON),
+    XCTAssertEqual(classWithReflectingClass.reflectedDescription(.json),
       contentsOfFile("expectedClassWithReflectingClass.json"))
     
     class SomeClass: ReflectedStringConvertible {
@@ -67,8 +70,8 @@ class ReflectedStringConvertibleTests: XCTestCase {
   
   /// Test the behavior of arrays.
   func testArray() {
-    let baseClass = BaseClass(a: "base", b: 1, c: 2, d: false, e: .Second, f: ("tuple", 123))
-    let derivedClass = DerivedClass(a: "derived", b: 1, c: 2, d: false, e: .Second, f: ("tuple", 456), g: [1, 2, 3])
+    let baseClass = BaseClass(a: "base", b: 1, c: 2, d: false, e: .second, f: ("tuple", 123))
+    let derivedClass = DerivedClass(a: "derived", b: 1, c: 2, d: false, e: .second, f: ("tuple", 456), g: [1, 2, 3])
     
     var array: [Any] = ["a", 123, 1.2, baseClass]
     let nestedArray: [Any] = [5, 6, derivedClass]
@@ -78,18 +81,18 @@ class ReflectedStringConvertibleTests: XCTestCase {
     let classWithArray = ClassWithArray(array: array)
 
     let expectedClassWithArrayDescription =
-      "ClassWithArray(array: [\"a\", 123, 1.2, BaseClass(a: \"base\", b: 1, c: 2.0, d: false, e: Second, f: (\"tuple\", 123)), [5, 6, DerivedClass(g: [1, 2, 3], a: \"derived\", b: 1, c: 2.0, d: false, e: Second, f: (\"tuple\", 456))]])"
+      "ClassWithArray(array: [\"a\", 123, 1.2, BaseClass(a: \"base\", b: 1, c: 2.0, d: false, e: second, f: (\"tuple\", 123)), [5, 6, DerivedClass(g: [1, 2, 3], a: \"derived\", b: 1, c: 2.0, d: false, e: second, f: (\"tuple\", 456))]])"
     
     XCTAssertEqual(classWithArray.description, expectedClassWithArrayDescription)
-    XCTAssertEqual(classWithArray.reflectedDescription(.JSON), contentsOfFile("expectedClassWithArray.json"))
+    XCTAssertEqual(classWithArray.reflectedDescription(.json), contentsOfFile("expectedClassWithArray.json"))
   }
   
   // Test the behavior of dictionaries.
   func testDictionary() {
     let baseClass =
-      BaseClass(a: "base", b: 10, c: 20, d: true, e: .AttributedThird(attribute: 30), f: ("tuple", 123))
+      BaseClass(a: "base", b: 10, c: 20, d: true, e: .attributedThird(attribute: 30), f: ("tuple", 123))
     
-    var dictionary: [String: Any] = ["a": 1, "b": 1.5, "c": true, "d": Enum.Second, "e": baseClass]
+    var dictionary: [String: Any] = ["a": 1, "b": 1.5, "c": true, "d": Enum.second, "e": baseClass]
     
     let nestedArray: [Any] = ["nestedArrayItem", true, false]
     let nestedDictionary: [Int: Any] = [1: "one", 2: "two", 3: "three"]
@@ -98,12 +101,13 @@ class ReflectedStringConvertibleTests: XCTestCase {
     dictionary["nestedDictionary"] = nestedDictionary
 
     let classWithDictionary = ClassWithDictionary(dictionary: dictionary)
+    let classWithDictionaryDescription = classWithDictionary.description
+    let expectedClassWithDictionaryDescription = "ClassWithDictionary(dictionary: [\"b\": 1.5, \"nestedDictionary\": [2: \"two\", 3: \"three\", 1: \"one\"], \"a\": 1, \"nestedArray\": [\"nestedArrayItem\", true, false], \"c\": true, \"e\": BaseClass(a: \"base\", b: 10, c: 20.0, d: true, e: attributedThird(30), f: (\"tuple\", 123)), \"d\": ReflectedStringConvertibleTests.Enum.second])"
+    XCTAssertEqual(classWithDictionaryDescription ,expectedClassWithDictionaryDescription)
     
-    XCTAssertEqual(
-      classWithDictionary.description,
-      "ClassWithDictionary(dictionary: [\"b\": 1.5, \"nestedArray\": [\"nestedArrayItem\", true, false], \"a\": 1, \"c\": true, \"e\": BaseClass(a: \"base\", b: 10, c: 20.0, d: true, e: AttributedThird(30), f: (\"tuple\", 123)), \"d\": ReflectedStringConvertibleTests.Enum.Second, \"nestedDictionary\": [2: \"two\", 3: \"three\", 1: \"one\"]])")
-    
-    XCTAssertEqual(classWithDictionary.reflectedDescription(.JSON), contentsOfFile("expectedClassWithDictionary.json"))
+    let jsonDescription = classWithDictionary.reflectedDescription(.json)
+    let expectedJsonDescription = contentsOfFile("expectedClassWithDictionary.json")
+    XCTAssertEqual(jsonDescription, expectedJsonDescription)
   }
   
   // Test the behavior of sets.
@@ -117,14 +121,14 @@ class ReflectedStringConvertibleTests: XCTestCase {
     let classWithSet = ClassWithSet(set: set)
     
     XCTAssertEqual(classWithSet.description, "ClassWithSet(set: [2, 3, 1])")
-    XCTAssertEqual(classWithSet.reflectedDescription(.JSON), contentsOfFile("expectedClassWithSet.json"))
+    XCTAssertEqual(classWithSet.reflectedDescription(.json), contentsOfFile("expectedClassWithSet.json"))
   }
 }
 
 enum Enum {
-  case First
-  case Second
-  case AttributedThird(attribute: Int)
+  case first
+  case second
+  case attributedThird(attribute: Int)
 }
 
 class NonReflectingClass {
