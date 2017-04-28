@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = "ReflectedStringConvertible"
-  s.version = "1.0.1"
+  s.version = "1.1.0"
   s.summary = "A protocol that allows any class to be printed as if it were a struct or a JSON object."
 
   s.homepage = "https://github.com/mattcomi/ReflectedStringConvertible"  

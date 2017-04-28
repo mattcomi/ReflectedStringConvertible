@@ -1,4 +1,3 @@
-
 // Copyright © 2016 Matt Comi. All rights reserved.
 
 import XCTest

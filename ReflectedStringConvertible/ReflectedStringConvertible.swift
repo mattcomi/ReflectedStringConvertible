@@ -1,4 +1,4 @@
-//  Copyright © 2016 Matt Comi. All rights reserved.
+// Copyright © 2016 Matt Comi. All rights reserved.
 
 import Foundation
 

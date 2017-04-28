@@ -1,10 +1,4 @@
-//
-//  ReflectedStringConvertible.h
-//  ReflectedStringConvertible
-//
-//  Created by Matt Comi on 29/04/2016.
-//  Copyright © 2016 Matt Comi. All rights reserved.
-//
+// Copyright © 2016 Matt Comi. All rights reserved.
 
 @import Foundation;
 

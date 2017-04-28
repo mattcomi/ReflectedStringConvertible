@@ -99,7 +99,7 @@ let george = Person(name: "George Miller", age: 71)
 let movie = Movie(title: "Mad Max", year: 2015, director: george)
 ```
 
-`print(movie.reflectedDescription(.normal)` (or just `print(movie)`) outputs:
+`print(movie.reflectedDescription(.normal))` (or just `print(movie)`) outputs:
 
 ```
 Movie(title: "Mad Max", year: 2015, director: Person(name: "George Miller", age: 71))
