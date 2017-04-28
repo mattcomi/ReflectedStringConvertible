@@ -7,8 +7,8 @@
 A protocol that extends `CustomStringConvertible` and uses reflection to add a
 detailed textual representation to any class. Two styles are supported:
 
-1. `Normal`: Similar to Swift's default textual representation of structs.
-2. `JSON`: Pretty JSON representation.
+1. `normal`: Similar to Swift's default textual representation of structs.
+2. `json`: Pretty JSON representation.
 
 ## Installation
 
@@ -61,9 +61,9 @@ class Person: ReflectedStringConvertible {
 Person(name: "Matt", age: 33)
 ```
 
-A style may be specified with `reflectedDescription(style:)`. The default style is `Normal`. That is, calling `description` is the same as calling `reflectedDescription(.Normal)`.
+A style may be specified with `reflectedDescription(style:)`. The default style is `normal`. That is, calling `description` is the same as calling `reflectedDescription(.normal)`.
 
-For example, `print(Person(name: "Matt", age: 33).reflectedDescription(.JSON))` outputs:
+For example, `print(Person(name: "Matt", age: 33).reflectedDescription(.json))` outputs:
 
 ```
 {
@@ -99,13 +99,13 @@ let george = Person(name: "George Miller", age: 71)
 let movie = Movie(title: "Mad Max", year: 2015, director: george)
 ```
 
-`print(movie.reflectedDescription(.Normal)` (or just `print(movie)`) outputs:
+`print(movie.reflectedDescription(.normal)` (or just `print(movie)`) outputs:
 
 ```
 Movie(title: "Mad Max", year: 2015, director: Person(name: "George Miller", age: 71))
 ```
 
-And `print(movie.reflectedDescription(.JSON))` outputs:
+And `print(movie.reflectedDescription(.json))` outputs:
 
 ```
 {
@@ -146,7 +146,7 @@ let series = Series(title: "The Leftovers", cast: cast)
 TVShow(title: "The Leftovers", cast: [Person(name: "Justin Theroux", age: 44), Person(name: "Carrie Coon", age: 35)])
 ```
 
-`print(series.reflectedDescription(.JSON))` outputs:
+`print(series.reflectedDescription(.json))` outputs:
 
 ```
 {

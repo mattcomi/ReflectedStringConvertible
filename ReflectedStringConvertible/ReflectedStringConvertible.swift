@@ -88,7 +88,7 @@ extension ReflectedStringConvertible {
   }
   
   /// A `Normal` style detailed textual representation of `self`. This is the same as calling
-  /// `reflectedDescription(.Normal)`
+  /// `reflectedDescription(.normal)`
   public var description: String {
     let mirror = Mirror(reflecting: self)
     
