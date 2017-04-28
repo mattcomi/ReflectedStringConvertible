@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 set -e
-
-xctool -project ReflectedStringConvertible.xcodeproj -scheme "ReflectedStringConvertible OSX" test
-xctool -project ReflectedStringConvertible.xcodeproj -scheme "ReflectedStringConvertible iOS" -sdk iphonesimulator9.3 -destination "platform=iOS Simulator,name=iPhone 6" test
+set -o pipefail && xcodebuild -scheme "ReflectedStringConvertible OSX" build 
+set -o pipefail && xcodebuild -scheme "ReflectedStringConvertible iOS" build
+xctool -scheme "ReflectedStringConvertible OSX" run-tests
+xctool -scheme "ReflectedStringConvertible iOS" -sdk iphonesimulator10.1 -destination "platform=iOS Simulator,name=iPhone 7" run-tests
