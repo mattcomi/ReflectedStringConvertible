@@ -12,9 +12,9 @@ class ReflectedStringConvertibleTests: XCTestCase {
   
   /// Test the basics.
   func testBasic() {
-    let baseClass = BaseClass(a: "test", b: 1, c: 2.1, d: true, e: .second, f: ("tuple", 123))
+    let baseClass = BaseClass(a: "test", b: 1, c: 1.2, d: true, e: .second, f: ("tuple", 123))
     
-    XCTAssertEqual(String(describing: baseClass), "BaseClass(a: \"test\", b: 1, c: 2.1, d: true, e: second, f: (\"tuple\", 123))")
+    XCTAssertEqual(String(describing: baseClass), "BaseClass(a: \"test\", b: 1, c: 1.2, d: true, e: second, f: (\"tuple\", 123))")
     
     XCTAssertEqual(baseClass.reflectedDescription(.normal), String(describing: baseClass))
     

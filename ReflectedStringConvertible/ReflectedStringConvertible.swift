@@ -110,7 +110,7 @@ extension ReflectedStringConvertible {
   /// A `JSON` style detailed textual representation of `self`.
   fileprivate var jsonDescription: String {
     let dictionary = self.dictionary(Mirror(reflecting: self).allChildren)
-    let data = try! JSONSerialization.data(withJSONObject: dictionary, options: .prettyPrinted)
+    let data = try! JSONSerialization.data(withJSONObject: dictionary, options: [.prettyPrinted, .sortedKeys])
     return String(data: data, encoding: String.Encoding.utf8)!
   }
   

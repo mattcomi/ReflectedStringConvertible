@@ -1,26 +1,26 @@
 {
   "dictionary" : {
-    "b" : 1.5,
-    "nestedDictionary" : {
-      "2" : "two",
-      "1" : "one",
-      "3" : "three"
-    },
     "a" : 1,
+    "b" : 1.5,
+    "c" : true,
+    "d" : "second",
+    "e" : {
+      "a" : "base",
+      "b" : 10,
+      "c" : 20,
+      "d" : true,
+      "e" : "attributedThird(30)",
+      "f" : "(\"tuple\", 123)"
+    },
     "nestedArray" : [
       "nestedArrayItem",
       true,
       false
     ],
-    "c" : true,
-    "e" : {
-      "b" : 10,
-      "e" : "attributedThird(30)",
-      "a" : "base",
-      "f" : "(\"tuple\", 123)",
-      "d" : true,
-      "c" : 20
-    },
-    "d" : "second"
+    "nestedDictionary" : {
+      "1" : "one",
+      "2" : "two",
+      "3" : "three"
+    }
   }
 }
