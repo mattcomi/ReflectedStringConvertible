@@ -11,6 +11,6 @@ Pod::Spec.new do |s|
   s.source_files = "ReflectedStringConvertible/*.{swift}"
   s.requires_arc = true
   
-  s.ios.deployment_target = '11.0'
+  s.ios.deployment_target = '10.0'
   s.osx.deployment_target = '10.13'
 end
