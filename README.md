@@ -1,4 +1,3 @@
-[![BuddyBuild](https://dashboard.buddybuild.com/api/statusImage?appID=5a2b5e5a6d0afd0001aeabaa&branch=master&build=latest)](https://dashboard.buddybuild.com/apps/5a2b5e5a6d0afd0001aeabaa/build/latest?branch=master?style=flat)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![](https://img.shields.io/cocoapods/v/ReflectedStringConvertible.svg?style=flat)](https://cocoapods.org/pods/ReflectedStringConvertible)
 [![Platform](https://img.shields.io/cocoapods/p/ReflectedStringConvertible.svg?style=flat)](http://cocoadocs.org/docsets/ReflectedStringConvertible)
