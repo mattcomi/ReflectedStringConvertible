@@ -98,18 +98,18 @@ extension ReflectedStringConvertible {
         $0.label ?? "" < $1.label ?? ""
       }
       .compactMap { (label: String?, value: Any) in
-      if let label = label {
-        var value = value
+        if let label = label {
+          var value = value
 
-        if value is String {
-          value = "\"\(value)\""
-        }
+          if value is String {
+            value = "\"\(value)\""
+          }
         
-        return "\(label): \(value)"
-      }
+          return "\(label): \(value)"
+        }
       
-      return nil
-    }
+        return nil
+      }
     
     return "\(mirror.subjectType)(\(descriptions.joined(separator: ", ")))"
   }
